@@ -1,0 +1,62 @@
+[
+  {
+    "id": "LT-2025-001",
+    "title": "MEGA JACKPOT LOTTERY",
+    "subtitle": "Your chance to win BIG",
+    "prize": "$5,000,000",
+    "category": "GRAND PRIZE",
+    "numbers": [7, 14, 23, 31, 42, 9],
+    "serial": "SN-2025-7142331",
+    "issued_date": "2025-02-01",
+    "expiry_date": "2025-04-30",
+    "draw_date": "2025-03-15",
+    "organizer": "National Lottery Commission",
+    "barcode_value": "5012345678901",
+    "color_scheme": "gold"
+  },
+  {
+    "id": "LT-2025-002",
+    "title": "GOLDEN FORTUNE DRAW",
+    "subtitle": "Fortune favors the bold",
+    "prize": "$1,000,000",
+    "category": "FIRST PRIZE",
+    "numbers": [3, 11, 19, 28, 37, 5],
+    "serial": "SN-2025-3111928",
+    "issued_date": "2025-02-01",
+    "expiry_date": "2025-04-30",
+    "draw_date": "2025-03-22",
+    "organizer": "National Lottery Commission",
+    "barcode_value": "5012345678902",
+    "color_scheme": "blue"
+  },
+  {
+    "id": "LT-2025-003",
+    "title": "SILVER STAR LOTTERY",
+    "subtitle": "Stars align for winners",
+    "prize": "$500,000",
+    "category": "SECOND PRIZE",
+    "numbers": [1, 8, 15, 22, 36, 44],
+    "serial": "SN-2025-1815224",
+    "issued_date": "2025-02-01",
+    "expiry_date": "2025-04-30",
+    "draw_date": "2025-03-29",
+    "organizer": "National Lottery Commission",
+    "barcode_value": "5012345678903",
+    "color_scheme": "green"
+  },
+  {
+    "id": "LT-2025-004",
+    "title": "ROYAL TREASURE HUNT",
+    "subtitle": "Claim your royal reward",
+    "prize": "$250,000",
+    "category": "THIRD PRIZE",
+    "numbers": [6, 13, 20, 27, 39, 48],
+    "serial": "SN-2025-6132027",
+    "issued_date": "2025-02-01",
+    "expiry_date": "2025-04-30",
+    "draw_date": "2025-04-05",
+    "organizer": "National Lottery Commission",
+    "barcode_value": "5012345678904",
+    "color_scheme": "red"
+  }
+]

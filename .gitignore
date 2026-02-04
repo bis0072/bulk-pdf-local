@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Production
+output/
+*.pdf
+*.png
+*.jpeg
+*.jpg
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*

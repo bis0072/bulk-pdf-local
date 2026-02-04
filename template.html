@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<title>Lottery Coupon - {{ID}}</title>
+<style>
+  /* ─── Reset & Page ─── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 700px;
+    height: 380px;
+    overflow: hidden;
+    background: #1a1a2e;
+    font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+  }
+
+  /* ─── Color Schemes ─── */
+  .scheme-gold   { --accent: #d4a017; --accent2: #f0d060; --glow: rgba(212,160,23,0.45); --bg-top: #2a1f00; --bg-bot: #1a1200; }
+  .scheme-blue   { --accent: #3a9bd9; --accent2: #7ec8e3; --glow: rgba(58,155,217,0.45); --bg-top: #0a1f3d; --bg-bot: #061222; }
+  .scheme-green  { --accent: #2ecc71; --accent2: #7fffc0; --glow: rgba(46,204,113,0.45); --bg-top: #0a2a1a; --bg-bot: #061410; }
+  .scheme-red    { --accent: #e74c3c; --accent2: #ff8a80; --glow: rgba(231,76,60,0.45); --bg-top: #2a0a0a; --bg-bot: #1a0606; }
+
+  /* ─── Outer wrapper ─── */
+  .coupon {
+    position: relative;
+    width: 700px;
+    height: 380px;
+    background: linear-gradient(145deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+    border: 2.5px solid var(--accent);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  /* ─── Decorative corner stars ─── */
+  .corner {
+    position: absolute;
+    width: 42px; height: 42px;
+    border-color: var(--accent2);
+    border-style: solid;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .corner.tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+  .corner.tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+  .corner.bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+  .corner.br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
+
+  /* ─── Decorative background circles ─── */
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--glow);
+    filter: blur(40px);
+    z-index: 0;
+  }
+  .bg-circle.c1 { width: 200px; height: 200px; top: -60px; left: -40px; }
+  .bg-circle.c2 { width: 180px; height: 180px; bottom: -70px; right: 80px; opacity: 0.6; }
+
+  /* ─── LEFT SECTION ─── */
+  .left {
+    position: relative;
+    z-index: 1;
+    width: 420px;
+    padding: 28px 24px 28px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .header-area { margin-bottom: 4px; }
+  .category-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .coupon-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px var(--glow);
+    line-height: 1.15;
+  }
+  .coupon-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Numbers row */
+  .numbers-label {
+    font-size: 9px;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .numbers-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .num-ball {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent2);
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 0 8px var(--glow);
+    backdrop-filter: blur(3px);
+  }
+
+  /* Meta row */
+  .meta-row {
+    display: flex;
+    gap: 24px;
+  }
+  .meta-item { display: flex; flex-direction: column; }
+  .meta-key {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  .meta-val {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* ─── DASHED DIVIDER ─── */
+  .divider {
+    position: relative;
+    z-index: 1;
+    width: 2px;
+    align-self: stretch;
+    border-left: 2px dashed var(--accent);
+    opacity: 0.45;
+    margin: 24px 0;
+  }
+ /* Scissors icon at top of divider */
+  .divider::before {
+    content: "✂";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent2);
+    font-size: 16px;
+    background: var(--bg-bot);
+    padding: 0 4px;
+  }
+
+  /* ─── RIGHT SECTION ─── */
+  .right {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 28px 18px 28px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Prize badge */
+  .prize-badge {
+    text-align: center;
+  }
+  .prize-label {
+    font-size: 9px;
+    color: white;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .prize-value {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent2);
+    text-shadow: 0 0 18px var(--glow);
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  /* Serial */
+  .serial-block { text-align: center; }
+  .serial-label {
+    font-size: 8px;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .serial-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* Barcode SVG area */
+  .barcode-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .barcode-svg {
+    display: block;
+  }
+  .barcode-num {
+    font-size: 9px;
+    color: white;
+    letter-spacing: 3px;
+    margin-top: 3px;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* Organizer footer */
+  .organizer {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  /* Add this inside your <style> tag */
+  .qr-code {
+    margin-top: 12px;
+    width: 80px; 
+    height: 80px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+</style>
+</head>
+<body>
+<div class="coupon {{COLOR_SCHEME}}">
+
+  <!-- bg glow circles -->
+  <div class="bg-circle c1"></div>
+  <div class="bg-circle c2"></div>
+
+  <!-- corner accents -->
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- ── LEFT ── -->
+  <div class="left">
+    <div class="header-area">
+      <div class="category-tag">LIC OF INDIA, NAGAON BRANCH</div>
+      <div class="coupon-title">ভোগালী ধামাকা প্ৰতিযোগিতা</div>
+      <div class="coupon-subtitle">০৫-০১-২০২৬ পৰা ১৩-০১-২০২৬ লৈ</div>
+    </div>
+
+    <div>
+      <div class="numbers-label">Coupon No.</div>
+      <div class="numbers-row" id="invoice">
+        {{NUMBER_BALLS}}
+      </div>
+    </div>
+ <img src="{{QR_CODE}}" class="qr-code" alt="QR Code" />
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-key">Issued</span>
+        <span class="meta-val">04-02-2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-key">Draw Date</span>
+        <span class="meta-val">08-02-2026</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ── DASHED CUT LINE ── -->
+  <div class="divider"></div>
+
+  <!-- ── RIGHT ── -->
+  <div class="right">
+    <div class="prize-badge">
+      <div class="prize-label">AGENT NAME</div>
+      <div class="prize-value">{{PRIZE}}</div>
+    </div>
+
+    <div class="serial-block">
+      <div class="serial-label">Code No.</div>
+      <div class="serial-value">{{SERIAL}}</div>
+    </div>
+
+    <div class="barcode-area">
+     <img src="{{BARCODE_IMG}}" class="barcode-img" style="display:block; max-width:140px; height:45px; border-radius:4px;" />
+      <div class="barcode-num">{{BARCODE_VALUE}}</div>
+    </div>
+
+    <div class="organizer">For Internal Use Only</div>
+  </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="as">
+<head>
+<meta charset="UTF-8" />
+<title>Bhogali Dhamaka NB Coupon</title>
+
+<!-- Assamese-compatible font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== PRINT SETUP ===== */
+@page {
+  size: 148mm 105mm;
+  margin: 5mm;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Serif Bengali", serif;
+  background: white;
+}
+
+/* ===== COUPON BASE ===== */
+.coupon {
+  position: relative;
+  width: 148mm;
+  height: 105mm;
+  border: 2px solid #b30000;
+  box-sizing: border-box;
+  background:
+    linear-gradient(135deg, #fff5cc, #ffeb99);
+  overflow: hidden;
+}
+
+/* ===== WATERMARK ===== */
+.watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(0,0,0,0.06);
+  transform: rotate(-30deg);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ===== COUPON NUMBER ===== */
+.coupon-no {
+  position: absolute;
+  top: 6mm;
+  left: 6mm;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 12px;
+  background: #ffe066;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  text-align: center;
+  padding: 15mm 10mm 25mm;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #b30000;
+}
+
+.sub {
+  font-size: 14px;
+  color: #003399;
+  margin-top: 4px;
+}
+
+.branch {
+  font-size: 15px;
+  font-weight: bold;
+  color: #006633;
+}
+
+/* ===== QR + BARCODE ===== */
+.codes {
+  position: absolute;
+  right: 8mm;
+  top: 18mm;
+  text-align: center;
+}
+
+.qr {
+  width: 28mm;
+  height: 28mm;
+  border: 1px solid #000;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barcode {
+  margin-top: 4mm;
+  width: 45mm;
+  height: 12mm;
+  border: 1px solid #000;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== AGENT DETAILS ===== */
+.agent {
+  position: absolute;
+  left: 8mm;
+  bottom: 16mm;
+  font-size: 12px;
+}
+
+.line {
+  border-bottom: 1px solid #000;
+  width: 70mm;
+  margin-top: 3px;
+}
+
+/* ===== PERFORATION ===== */
+.perforation {
+  position: absolute;
+  bottom: 12mm;
+  left: 0;
+  right: 0;
+  border-top: 2px dashed #555;
+  text-align: center;
+  font-size: 10px;
+  padding-top: 2px;
+}
+
+/* ===== MICROTEXT (ANTI-COUNTERFEIT) ===== */
+.microtext {
+  position: absolute;
+  bottom: 4mm;
+  left: 4mm;
+  right: 4mm;
+  font-size: 5px;
+  letter-spacing: 0.6px;
+  color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="coupon">
+
+  <div class="watermark">LIC of India</div>
+
+  <div class="coupon-no" id="couponNo">NB-000001</div>
+
+  <div class="content">
+    <h1>ভোগালী ধামাকা NB প্ৰতিযোগিতা</h1>
+    <div class="sub">০৫-০১-২০২৬ পৰা ১৩-০১-২০২৬লৈকে</div>
+    <div class="branch">LIC of India, Nagaon Branch</div>
+  </div>
+
+  <div class="codes">
+    <div class="qr">QR CODE</div>
+    <div class="barcode">BARCODE</div>
+  </div>
+
+  <div class="agent">
+    Agent Name / Mobile No. / Agency Code
+    <div class="line"></div>
+  </div>
+
+  <div class="perforation">✂ Tear Here</div>
+
+  <div class="microtext">
+    LICOFINDIALICOFINDIALICOFINDIALICOFINDIA
+    AUTHENTICNB2026AUTHENTICNB2026AUTHENTICNB2026
+  </div>
+
+</div>
+
+<script>
+/* ===== SERIAL AUTO-INCREMENT ===== */
+let start = 1;          // change starting number
+let pad = 6;            // NB-000001
+const el = document.getElementById("couponNo");
+el.textContent = "NB-" + String(start).padStart(pad, "0");
+</script>
+
+</body>
+</html>

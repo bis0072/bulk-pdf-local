@@ -1,0 +1,17 @@
+{
+  "name": "lottery-coupon-generator",
+  "version": "1.0.0",
+  "description": "Generates lottery coupons from HTML + JSON → PNG, JPEG, PDF",
+  "main": "generate.js",
+  "scripts": {
+    "start": "node generate.js",
+    "setup": "npx puppeteer browsers install chrome"
+  },
+  "dependencies": {
+    "bwip-js": "^4.8.0",
+    "puppeteer": "^22.15.0",
+    "puppeteer-core": "^24.36.1",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.33.5"
+  }
+}
